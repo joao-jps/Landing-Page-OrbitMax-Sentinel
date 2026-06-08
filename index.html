@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OrbitMax Sentinel</title>
+  
+  <!-- Chamada do Google Fonts: Orbitron para títulos + Exo 2 para textos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500&display=swap" rel="stylesheet" />
+
+          <!-- Estilos CSS  -->
+  <link rel="stylesheet" href="./src/css/style.css">
+  <link rel="stylesheet" href="./src/css/efeitos.css">
+</head>
+
+<body>
+
+  <!-- NAVEGAÇÃO ( Links )-->
+  <nav id="nav">
+    <div class="nav-logo">OrbitMax <strong>Sentinel</strong></div>
+    <ul class="nav-links">
+      <li><a href="#problema">Problema</a></li>
+      <li><a href="#tecnologia">Tecnologia</a></li>
+      <li><a href="#objetivos">Objetivos</a></li>
+      <li><a href="#publico">Público-Alvo</a></li>
+      <li><a href="#beneficios">Benefícios</a></li>
+      <li><a href="#dia-a-dia">No Dia a Dia</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO (Sessão Inicial) -->
+  <section id="hero">
+    <!-- Estrelas geradas pelo JavaScript -->
+    <canvas id="canvas-estrelas"></canvas>
+
+    <div class="hero-conteudo">
+      <p class="hero-tag">
+        <span class="hero-linha-tag"></span>
+        Global Solution 2026 · FIAP · ESW 1º Ano
+      </p>
+
+      <h1 class="hero-titulo">
+        <span class="titulo-branco">OrbitMax</span>
+        <span class="titulo-gradiente">Sentinel</span>
+      </h1>
+
+      <p class="hero-sub">Monitoramento de desastres naturais via dados satelitais.</p>
+
+      <a href="#problema" class="btn-hero">Explorar a Solução</a>
+    </div>
+  </section>
+
+  <!-- PROBLEMA -->
+  <section id="problema" class="secao">
+    <div class="container">
+      <span class="secao-num">01</span>
+      <h2 class="secao-titulo">O Problema</h2>
+      <p class="secao-sub">Satélites já monitoram o Brasil. Os dados não chegam a quem precisa.</p>
+
+      <div class="grade-3">
+
+        <div class="card card-destaque">
+          <h3>Enchentes</h3>
+          <p>O RS sofreu enchentes históricas em 2024. O INPE monitorava, mas os alertas não chegaram às comunidades a tempo.</p>
+        </div>
+
+        <div class="card card-destaque">
+          <h3>Queimadas</h3>
+          <p>Focos no Pantanal detectados por satélite demoram horas para virar alertas úteis para brigadistas locais.</p>
+        </div>
+
+        <div class="card card-destaque">
+          <h3>Deslizamentos</h3>
+          <p>Áreas de risco geológico monitoradas por sensoriamento remoto não têm canal de comunicação com quem mora nelas.</p>
+        </div>
+
+      </div>
+
+      <!-- Números reais do impacto -->
+      <div class="numeros">
+
+        <div class="numero-item">
+          <strong>+150 mil</strong>
+          <span>desabrigados no RS em 2024</span>
+        </div>
+
+        <div class="numero-item">
+          <strong>R$ 86 bi</strong>
+          <span>em prejuízos estimados</span>
+        </div>
+
+        <div class="numero-item">
+          <strong>3,8 mi ha</strong>
+          <span>queimados no Pantanal</span>
+        </div>
+
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- TECNOLOGIA -->
+  <section id="tecnologia" class="secao secao-escura">
+    <div class="container">
+      <span class="secao-num">02</span>
+      <h2 class="secao-titulo">Tecnologias</h2>
+      <p class="secao-sub">APIs abertas + Python + Arduino + Web = alertas acessíveis.</p>
+
+      <!-- Cards clicáveis — abrem e fecham via JavaScript -->
+      <div class="grade-2" id="lista-tecnologias">
+
+        <div class="card-tech" data-index="0">
+          <div class="card-tech-header">
+            <h3>Dados Satelitais (NASA / INPE)</h3>
+            <span class="seta">+</span>
+          </div>
+          <div class="card-tech-corpo">
+            <p>NASA FIRMS detecta focos de calor em tempo real. NASA EONET registra eventos climáticos extremos. INPE monitora o Brasil inteiro. Tudo via API pública e gratuita.</p>
+            <div class="tags">
+              <span class="tag">NASA FIRMS</span>
+              <span class="tag">NASA EONET</span>
+              <span class="tag">INPE</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-tech" data-index="1">
+          <div class="card-tech-header">
+            <h3>Processamento (Python)</h3>
+            <span class="seta">+</span>
+          </div>
+          <div class="card-tech-corpo">
+            <p>Scripts Python consomem as APIs, processam coordenadas, calculam o nível de risco e disparam notificações automáticas para gestores e comunidades.</p>
+            <div class="tags">
+              <span class="tag">Python 3</span>
+              <span class="tag">requests</span>
+              <span class="tag">Matplotlib</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-tech" data-index="2">
+          <div class="card-tech-header">
+            <h3>Alerta Local/Físico (Arduino)</h3>
+            <span class="seta">+</span>
+          </div>
+          <div class="card-tech-corpo">
+            <p>Protótipo com Arduino UNO simula estação de alerta local devido a fumaça gerada pela queimada, servidor gerado em python detecta e confirma a gravidade da situação: LED vermelho para risco crítico, buzzer sonoro e display LCD. Funciona sem internet estável.</p>
+            <div class="tags">
+              <span class="tag">Arduino Uno</span>
+              <span class="tag">LED RGB</span>
+              <span class="tag">Wokwi</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-tech" data-index="3">
+          <div class="card-tech-header">
+            <h3>Dashboard Web (HTML/CSS/JS)</h3>
+            <span class="seta">+</span>
+          </div>
+          <div class="card-tech-corpo">
+            <p>Interface web exibe alertas ativos, histórico de eventos e dados de satélite em tempo real. JavaScript puro, sem frameworks. Responsivo.</p>
+            <div class="tags">
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">JavaScript</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJETIVOS (com ODS) -->
+  <section id="objetivos" class="secao">
+    <div class="container">
+      <span class="secao-num">03</span>
+      <h2 class="secao-titulo">Objetivos</h2>
+      <p class="secao-sub">O que o OrbitMax Sentinel quer alcançar.</p>
+
+      <div class="lista-objetivos">
+
+        <div class="objetivo">
+          <div class="objetivo-num">01</div>
+          <div class="objetivo-texto">
+            <h3>Democratizar dados satelitais</h3>
+            <p>Transformar dados brutos da NASA e INPE em alertas simples para qualquer cidadão.</p>
+          </div>
+          <span class="ods ods-13">ODS 13</span>
+        </div>
+
+        <div class="objetivo">
+          <div class="objetivo-num">02</div>
+          <div class="objetivo-texto">
+            <h3>Antecipar desastres no Brasil</h3>
+            <p>Emitir alertas precoces para enchentes, queimadas e deslizamentos.</p>
+          </div>
+          <span class="ods ods-11">ODS 11</span>
+        </div>
+
+        <div class="objetivo">
+          <div class="objetivo-num">03</div>
+          <div class="objetivo-texto">
+            <h3>Integrar tecnologia espacial ao cotidiano</h3>
+            <p>Qualquer município pode usar dados de satélite — não só agências governamentais.</p>
+          </div>
+          <span class="ods ods-9">ODS 9</span>
+        </div>
+
+        <div class="objetivo">
+          <div class="objetivo-num">04</div>
+          <div class="objetivo-texto">
+            <h3>Reduzir desigualdade no acesso à informação</h3>
+            <p>Comunidades remotas são as mais vulneráveis e as que menos recebem alertas.</p>
+          </div>
+          <span class="ods ods-10">ODS 10</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PÚBLICO-ALVO -->
+  <section id="publico" class="secao secao-escura">
+    <div class="container">
+      <span class="secao-num">04</span>
+      <h2 class="secao-titulo">Público-Alvo</h2>
+      <p class="secao-sub">Quem a solução protege e quem a opera.</p>
+
+      <div class="grade-3">
+
+        <div class="card card-publico">
+          <h3>Defesa Civil</h3>
+          <p>Gestores que precisam de painel unificado para coordenar evacuações e resposta a desastres.</p>
+        </div>
+
+        <div class="card card-publico card-destaque">
+          <h3>Comunidades em Risco</h3>
+          <p>Moradores de encostas, rios e zonas de mata que precisam de aviso prévio simples e acessível.</p>
+        </div>
+
+        <div class="card card-publico">
+          <h3>Pesquisadores e ONGs</h3>
+          <p>Cientistas e organizações que precisam de dados históricos para análise e advocacy climático.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section id="beneficios" class="secao">
+    <div class="container">
+      <span class="secao-num">05</span>
+      <h2 class="secao-titulo">Benefícios</h2>
+      <p class="secao-sub">O que muda quando o espaço fala com quem precisa.</p>
+
+      <!-- Barras animadas pelo JavaScript ao entrar na tela -->
+      <div class="lista-barras" id="lista-barras">
+
+        <div class="barra-item">
+          <div class="barra-info">
+            <span class="barra-titulo">Velocidade de alerta</span>
+            <span class="barra-valor">85%</span>
+          </div>
+
+          <div class="barra-track">
+            <div class="barra-fill" data-porcentagem="85"></div>
+          </div>
+          <p class="barra-desc">mais rápido que métodos tradicionais</p>
+        </div>
+
+        <div class="barra-item">
+          <div class="barra-info">
+            <span class="barra-titulo">Cobertura territorial</span>
+            <span class="barra-valor">100%</span>
+          </div>
+
+          <div class="barra-track">
+            <div class="barra-fill" data-porcentagem="100"></div>
+          </div>
+          <p class="barra-desc">do Brasil coberto pelos satélites</p>
+        </div>
+
+        <div class="barra-item">
+          <div class="barra-info">
+            <span class="barra-titulo">Redução de mortes</span>
+            <span class="barra-valor">60%</span>
+          </div>
+          <div class="barra-track">
+            <div class="barra-fill" data-porcentagem="60"></div>
+          </div>
+          <p class="barra-desc">alertas precoces salvam vidas (dados ONU)</p>
+        </div>
+
+        <div class="barra-item">
+          <div class="barra-info">
+            <span class="barra-titulo">Custo de implantação</span>
+            <span class="barra-valor">~R$100</span>
+          </div>
+
+          <div class="barra-track">
+            <div class="barra-fill" data-porcentagem="70"></div>
+          </div>
+          <p class="barra-desc">hardware Arduino + APIs gratuitas da NASA</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NO DIA A DIA  Contém: linha do tempo + dados reais da API NASA EONET -->
+  <section id="dia-a-dia" class="secao secao-escura">
+    <div class="container">
+      <span class="secao-num">06</span>
+      <h2 class="secao-titulo">No Dia a Dia</h2>
+      <p class="secao-sub">Como funciona na prática com eventos reais.</p>
+
+      <!-- Linha do tempo do fluxo de uso -->
+      <div class="linha-tempo">
+
+        <div class="etapa">
+          <div class="etapa-circulo">1</div>
+          <div class="etapa-conteudo">
+            <h3>Satélite detecta o evento</h3>
+            <p>NASA FIRMS detecta foco de calor. EONET registra evento climático extremo. Tempo real.</p>
+          </div>
+        </div>
+
+        <div class="etapa">
+          <div class="etapa-circulo">2</div>
+          <div class="etapa-conteudo">
+            <h3>Python classifica o risco</h3>
+            <p>Script consome a API, calcula o nível de risco e prepara o alerta em ~2 minutos.</p>
+          </div>
+        </div>
+
+        <div class="etapa">
+          <div class="etapa-circulo">3</div>
+          <div class="etapa-conteudo">
+            <h3>Dashboard atualiza</h3>
+            <p>Gestores da Defesa Civil veem o alerta com localização, nível e recomendação de ação.</p>
+          </div>
+        </div>
+
+        <div class="etapa">
+          <div class="etapa-circulo">4</div>
+          <div class="etapa-conteudo">
+            <h3>Arduino aciona alerta local</h3>
+            <p>LED vermelho, buzzer e LCD na comunidade: "RISCO CRÍTICO — EVACUAR".</p>
+          </div>
+        </div>
+
+        <img src="./src/assets/imgs/teste1.png" alt="Queimada extrema" class="card" style="height: 40%;">
+      </div>
+
+      <!-- PAINEL DE EVENTOS NASA EONET — dados reais via API -->
+      <div class="painel-api">
+        <div class="painel-api-header">
+          <h3> Eventos Reais — NASA EONET</h3>
+          <span class="fonte-badge">Fonte: api.nasa.gov</span>
+        </div>
+        <p class="painel-api-desc">Eventos naturais ativos agora no planeta, direto da API da NASA:</p>
+
+        <!-- Estado de carregamento -->
+        <p id="status-api" class="status-carregando">Buscando eventos da NASA...</p>
+
+<!-- Slideshow de eventos reais da NASA EONET -->
+        <section class="slideshow">
+    <img id="slide-img" src="" alt="Evento">
+    
+    <div class="slide-info">
+        <h2 id="slide-title">Carregando...</h2>
+        <p id="slide-desc"></p>
+    </div>
+
+    <div class="slide-controls">
+        <button id="prev" >Anterior</button>
+        <button id="next">Próximo</button>
+    </div>
+</section>
+ 
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer id="rodape">
+    <div class="container">
+
+      <div class="rodape-logo">OrbitMax <strong>Sentinel</strong></div>
+      <p class="rodape-desc">Global Solution 2026 · FIAP · Engenharia de Software 1º Ano · InovaX</p>
+
+      <!-- Integrantes -->
+      <div class="rodape-integrantes">
+
+        <div class="integrante">
+          <span>João Pedro De Souza</span>
+          <span class="rm">RM: 571437</span>
+        </div>
+        <div class="integrante">
+          <span>Bruno Araújo Castro</span>
+          <span class="rm">RM: </span>
+        </div>
+        <div class="integrante">
+          <span>Artur de Novazzi Maia</span>
+          <span class="rm">RM: 572624</span>
+        </div>
+        <div class="integrante">
+          <span>Arthur Germano Pinheiro</span>
+          <span class="rm">RM: 574042</span>
+        </div>
+ 
+      </div>
+      <p class="rodape-copy">© 2026 OrbitMax Sentinel · FIAP Global Solution</p>
+  </footer>
+
+  <script src="./src/js/behaviour.js"></script>
+
+</body>
+</html>

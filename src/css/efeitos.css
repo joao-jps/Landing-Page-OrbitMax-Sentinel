@@ -1,0 +1,119 @@
+
+   /* Apenas efeitos visuais
+     Transições, focus, pseudo-elementos, pseudo-classes, animações e hovers
+
+/* NAVEGAÇÃO  */
+
+/* Suaviza a troca de transparente → sólido ao rolar */
+#nav {
+  transition: background 0.3s, border-color 0.3s;
+}
+
+/* Blur aplicado quando JS adiciona a classe .fixado */
+#nav.fixado {
+  backdrop-filter: blur(12px);
+}
+
+/* Links da nav ficam brancos ao passar o mouse */
+.nav-links a {
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--branco);
+}
+
+
+/* BOTÃO HERO ( Inicio ) */
+
+/* Transição suave de cor e movimento ao hover */
+.btn-hero {
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-hero:hover {
+  background: var(--laranja-claro);
+  transform: translateY(-2px);
+}
+
+
+/* CARDS PADRÃO
+   (Problema e Público-alvo) */
+
+/* Sobe levemente e muda borda ao passar o mouse */
+.card {
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.card:hover {
+  border-color: var(--borda-hover);
+  transform: translateY(-4px);
+}
+
+/* Card destacado (do meio) fica laranja total no hover */
+.card-destaque:hover {
+  border-color: var(--laranja);
+}
+
+
+/* CARDS DE TECNOLOGIA
+   (acordeão interativo) */
+
+/* Borda muda para ciano ao hover ou quando está aberto */
+.card-tech {
+  transition: border-color 0.3s;
+}
+
+.card-tech:hover,
+.card-tech.aberto {
+  border-color: var(--ciano);
+}
+
+/* O "+" gira 45° virando um "x" quando o card abre */
+.seta {
+  transition: transform 0.3s;
+}
+
+.card-tech.aberto .seta {
+  transform: rotate(45deg);
+}
+
+/* Corpo do card expande suavemente */
+.card-tech-corpo {
+  transition: max-height 0.5s ease, opacity 0.3s, padding 0.3s;
+}
+
+
+/* OBJETIVOS*/
+
+/* Desliza para a direita ao hover */
+.objetivo {
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.objetivo:hover {
+  border-color: var(--borda-hover);
+  transform: translateX(5px);
+}
+
+
+/* BARRAS DE BENEFÍCIOS
+   Transição disparada pelo JS com IntersectionObserver  */
+
+/* A barra cresce da esquerda com easing suave */
+.barra-fill {
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* EVENTOS NASA (painel API) */
+
+/* Borda ilumina ao passar o mouse no evento */
+.evento-item {
+  transition: border-color 0.2s;
+}
+
+.evento-item:hover {
+  border-color: var(--borda-hover);
+}
+

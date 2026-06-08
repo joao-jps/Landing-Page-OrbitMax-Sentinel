@@ -1,0 +1,777 @@
+   /* Apenas estrutura, layout e tipografia.
+
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+ul { list-style: none; }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* VARIÁVEIS GLOBAIS
+   Cores, fontes e medidas  */
+:root {
+  /* Fundos */
+  --fundo:        #080c14;
+  --fundo-alt:    #0d1422;
+  --fundo-card:   #111928;
+
+  /* Bordas */
+  --borda:        #1e2d47;
+  --borda-hover:  #2a4a7f;
+
+  /* Acentos */
+  --laranja:       #f97316;
+  --laranja-claro: #fb923c;
+  --ciano:         #22d3ee;
+
+  /* Texto */
+  --texto:        #e2e8f0;
+  --texto-fraco:  #94a3b8;
+  --branco:       #ffffff;
+
+  /* Status / risco */
+  --verde:    #22c55e;
+  --amarelo:  #eab308;
+  --vermelho: #ef4444;
+
+  /* Badges ODS */
+  --ods-9:  #fd6925;
+  --ods-10: #dd1367;
+  --ods-11: #fd9d24;
+  --ods-13: #3f7e44;
+
+  /* Tipografia */
+  --fonte-titulo: 'Orbitron', monospace;
+  --fonte-corpo:  'Exo 2', sans-serif;
+
+  /* Layout */
+  --max-largura: 1100px;
+  --nav-altura:  68px;
+}
+
+
+body {
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte-corpo);
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+
+/* NAVEGAÇÃO */
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-altura);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  z-index: 100;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+}
+
+/* Classe adicionada via JS quando rola a página  */
+#nav.fixado {
+  background: rgba(8, 12, 20, 0.88);
+  border-bottom-color: var(--borda);
+}
+
+.nav-logo {
+  font-family: var(--fonte-titulo);
+  font-size: 1rem;
+  color: var(--branco);
+  letter-spacing: 0.04em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-family: var(--fonte-titulo);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--texto-fraco);
+}
+
+
+/* HERO ( Inicio )*/
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: var(--nav-altura) 2.5rem 0;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 20% 30%, rgba(249,115,22,0.05) 0%, transparent 60%),
+              var(--fundo);
+}
+
+/* Canvas das estrelas — posicionado pelo JS */
+#canvas-estrelas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Texto que fica acima do canvas de estrelas */
+.hero-conteudo {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+}
+
+/* Tag laranja com linha antes do título */
+.hero-tag {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--fonte-titulo);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--laranja);
+  margin-bottom: 1.8rem;
+}
+
+.hero-linha-tag {
+  display: inline-block;
+  width: 38px;
+  height: 1px;
+  background: var(--laranja);
+  flex-shrink: 0;
+}
+
+/* Título em duas linhas empilhadas */
+.hero-titulo {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--fonte-titulo);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: 1px;
+  margin-bottom: 1.4rem;
+}
+
+.titulo-branco {
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  color: var(--branco);
+}
+
+/* "Sentinel" com degradê de laranja para ciano */
+.titulo-gradiente {
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  background: linear-gradient(90deg, var(--laranja) 0%, var(--ciano) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 1rem;
+  color: var(--texto-fraco);
+  margin-bottom: 2rem;
+}
+
+/* Botão laranja arredondado do hero */
+.btn-hero {
+  display: inline-block;
+  padding: 0.85rem 2.2rem;
+  background: var(--laranja);
+  color: var(--branco);
+  font-family: var(--fonte-titulo);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+}
+
+
+/* SEÇÕES — estrutura geral*/
+.secao {
+  padding: 6rem 2.5rem;
+  background: var(--fundo);
+}
+
+.secao-escura {
+  background: var(--fundo-alt);
+}
+
+.container {
+  max-width: var(--max-largura);
+  margin: 0 auto;
+}
+
+/* Número decorativo gigante no canto — quase invisível */
+.secao-num {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-size: 5rem;
+  font-weight: 900;
+  color: rgba(249,115,22, 0.05);
+  line-height: 1;
+  margin-bottom: -1.5rem;
+  user-select: none;
+}
+
+.secao-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--branco);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.6rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--borda);
+}
+
+.secao-sub {
+  color: var(--texto-fraco);
+  font-size: 0.95rem;
+  margin-bottom: 3rem;
+  margin-top: 0.6rem;
+}
+
+
+/* -------------------------
+   GRADES (Flexbox / Grid)
+------------------------- */
+
+/* 3 colunas — usado em Problema e Público-Alvo */
+.grade-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.4rem;
+}
+
+/* 2 colunas — usado em Tecnologia */
+.grade-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.2rem;
+}
+
+
+/* CARD PADRÃO
+   Usado em: Problema, Público-alvo */
+.card {
+  background: var(--fundo-card);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 1.8rem;
+}
+
+/* Card com borda laranja */
+.card-destaque {
+  border-color: rgba(249, 115, 22, 0.35);
+}
+
+.card-icone {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 0.9rem;
+  color: var(--branco);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.03em;
+}
+
+.card p {
+  font-size: 0.875rem;
+  color: var(--texto-fraco);
+  line-height: 1.7;
+}
+
+
+/* NÚMEROS DE IMPACTO
+   (seção Problema) */
+.numeros {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--borda);
+}
+
+.numero-item strong {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--laranja);
+  line-height: 1.1;
+}
+
+.numero-item span {
+  font-size: 0.78rem;
+  color: var(--texto-fraco);
+  display: block;
+  margin-top: 0.2rem;
+}
+
+
+/* CARDS DE TECNOLOGIA
+   Acordeão — abre/fecha via JS */
+.card-tech {
+  background: var(--fundo-card);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 1.4rem 1.6rem;
+  cursor: pointer;
+}
+
+.card-tech-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tech-icone {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.card-tech-header h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 0.82rem;
+  color: var(--branco);
+  letter-spacing: 0.03em;
+  flex: 1;
+}
+
+/* Símbolo "+" que vira "x" ao abrir — giro em efeitos.css */
+.seta {
+  color: var(--ciano);
+  font-size: 1.3rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Corpo oculto — a transição de abertura está em efeitos.css */
+.card-tech-corpo {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+/* Quando o JS adiciona a classe "aberto" o efeitos.css faz a animação */
+.card-tech.aberto .card-tech-corpo {
+  max-height: 200px;
+  opacity: 1;
+  padding-top: 1rem;
+  border-top: 1px solid var(--borda);
+  margin-top: 1rem;
+}
+
+.card-tech-corpo p {
+  font-size: 0.875rem;
+  color: var(--texto-fraco);
+  line-height: 1.7;
+  margin-bottom: 0.8rem;
+}
+
+/* Tags de tecnologia dentro dos cards */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.2rem 0.7rem;
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  color: var(--ciano);
+  font-family: var(--fonte-titulo);
+  letter-spacing: 0.04em;
+}
+
+
+/* LISTA DE OBJETIVOS
+   (seção Objetivos)*/
+.lista-objetivos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.objetivo {
+  display: grid;
+  grid-template-columns: 60px 1fr 80px;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--fundo-card);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 1.4rem 1.8rem;
+}
+
+.objetivo-num {
+  font-family: var(--fonte-titulo);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: rgba(249, 115, 22, 0.18);
+  line-height: 1;
+}
+
+.objetivo-texto h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 0.82rem;
+  color: var(--branco);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.03em;
+}
+
+.objetivo-texto p {
+  font-size: 0.83rem;
+  color: var(--texto-fraco);
+  line-height: 1.5;
+}
+
+/* Badges coloridos dos ODS da ONU */
+.ods {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  font-family: var(--fonte-titulo);
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.ods-9  { background: var(--ods-9);  }
+.ods-10 { background: var(--ods-10); }
+.ods-11 { background: var(--ods-11); color: #111; }
+.ods-13 { background: var(--ods-13); }
+
+
+/* PÚBLICO-ALVO
+   Reaproveita .card com texto centralizado*/
+.card-publico {
+  text-align: center;
+}
+
+.card-publico .card-icone {
+  font-size: 2.6rem;
+}
+
+
+/* BARRAS DE BENEFÍCIOS */
+.lista-barras {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.barra-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.barra-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 0.8rem;
+  color: var(--branco);
+  letter-spacing: 0.03em;
+}
+
+.barra-valor {
+  font-family: var(--fonte-titulo);
+  font-size: 0.8rem;
+  color: var(--laranja);
+}
+
+/* Trilho cinza da barra */
+.barra-track {
+  height: 7px;
+  background: var(--borda);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.4rem;
+}
+
+/* Preenchimento Da Barra Benefícios — começa em 0, o JS define a largura final. */
+.barra-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--laranja), var(--ciano));
+  border-radius: 999px;
+}
+
+.barra-desc {
+  font-size: 0.8rem;
+  color: var(--texto-fraco);
+}
+
+
+/* LINHA DO TEMPO (seção No Dia a Dia)*/
+.linha-tempo {
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 3.5rem;
+}
+
+/* Fio vertical desenhado com pseudo-elemento */
+.linha-tempo::before {
+  content: '';
+  position: absolute;
+  left: 13px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--laranja), var(--ciano), transparent);
+}
+
+.etapa {
+  display: flex;
+  gap: 1.4rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+/* Bolinha com número da etapa */
+.etapa-circulo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--laranja);
+  background: var(--fundo-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fonte-titulo);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--laranja);
+  flex-shrink: 0;
+  position: relative;
+  left: -2.5rem;
+  top: 0;
+}
+
+.etapa-conteudo {
+  margin-left: -1.1rem;
+}
+
+.etapa-conteudo h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 0.82rem;
+  color: var(--branco);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.03em;
+}
+
+.etapa-conteudo p {
+  font-size: 0.83rem;
+  color: var(--texto-fraco);
+  line-height: 1.6;
+}
+
+
+/* PAINEL DE EVENTOS NASA (seção No Dia a Dia) */
+.painel-api {
+  background: var(--fundo-card);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 2rem;
+}
+
+.painel-api-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.painel-api-header h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 0.9rem;
+  color: var(--branco);
+  letter-spacing: 0.03em;
+}
+
+/* Badge "Fonte: api.nasa.gov" */
+.fonte-badge {
+  font-size: 0.7rem;
+  color: var(--ciano);
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-family: var(--fonte-titulo);
+  letter-spacing: 0.04em;
+}
+
+.painel-api-desc {
+  font-size: 0.83rem;
+  color: var(--texto-fraco);
+  margin-bottom: 1.4rem;
+}
+
+.status-carregando {
+  font-size: 0.83rem;
+  color: var(--texto-fraco);
+  font-style: italic;
+}
+
+/* Lista de eventos retornados pela API */
+.lista-eventos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.evento-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+}
+
+.evento-icone {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.evento-info h4 {
+  font-family: var(--fonte-titulo);
+  font-size: 0.78rem;
+  color: var(--branco);
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.02em;
+}
+
+.evento-info p {
+  font-size: 0.75rem;
+  color: var(--texto-fraco);
+}
+
+.erro-api {
+  font-size: 0.83rem;
+  color: var(--vermelho);
+}
+
+
+/* RODAPÉ */
+#rodape {
+  background: var(--fundo-alt);
+  border-top: 1px solid var(--borda);
+  padding: 4rem 2.5rem 2rem;
+}
+
+.rodape-logo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.1rem;
+  color: var(--branco);
+  margin-bottom: 0.6rem;
+}
+
+.rodape-desc {
+  font-size: 0.83rem;
+  color: var(--texto-fraco);
+  margin-bottom: 2rem;
+}
+
+.rodape-integrantes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--borda);
+}
+
+.integrante {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.8rem 1.2rem;
+  background: var(--fundo-card);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  font-size: 0.83rem;
+  color: var(--texto);
+}
+
+.rm {
+  font-family: var(--fonte-titulo);
+  font-size: 0.7rem;
+  color: var(--laranja);
+}
+
+.rodape-copy {
+  font-size: 0.75rem;
+  color: var(--texto-fraco);
+  opacity: 0.6;
+  border-top: 1px solid var(--borda);
+  padding-top: 1.2rem;
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+
+  .objetivo {
+    grid-template-columns: 1fr;
+  }
+  .objetivo-num { display: none; }
+
+  .titulo-branco,
+  .titulo-gradiente {
+    font-size: 3rem;
+  }
+
+  .etapa-circulo { left: -2rem; }
+}
+
+img {
+  width: 50%;
+  border-radius: 10px;
+  background-color: #080c14;
+}
