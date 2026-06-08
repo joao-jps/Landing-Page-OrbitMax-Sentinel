@@ -10,9 +10,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500&display=swap" rel="stylesheet" />
 
-          <!-- Estilos CSS  -->
+          <!-- CHAMADAS CSS  -->
   <link rel="stylesheet" href="./src/css/style.css">
   <link rel="stylesheet" href="./src/css/efeitos.css">
+  <link rel="stylesheet" href="./src/css/formulario.css">
+  <link rel="stylesheet" href="./src/css/quiz.css">
 </head>
 
 <body>
@@ -27,6 +29,8 @@
       <li><a href="#publico">Público-Alvo</a></li>
       <li><a href="#beneficios">Benefícios</a></li>
       <li><a href="#dia-a-dia">No Dia a Dia</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><a href="#quiz">Quiz</a></li>
     </ul>
   </nav>
 
@@ -381,6 +385,153 @@
  
   </section>
 
+  <!-- FORMULÁRIO DE CONTATO -->
+  <section id="contato" class="secao secao-escura">
+    <div class="container">
+      <span class="secao-num">07</span>
+      <h2 class="secao-titulo">Receba Alertas</h2>
+      <p class="secao-sub">Cadastre sua instituição para receber notificações de risco da sua região.</p>
+
+      <!-- Formulário -->
+      <form id="form-contato" class="form-contato">
+
+        <!-- LINHA 1: Nome e Instituição lado a lado -->
+        <div class="form-duplo">
+
+          <div class="form-grupo">
+            <label class="form-label" for="campo-nome">
+              Nome completo <span class="obrigatorio">*</span>
+            </label>
+            <input type="text" id="campo-nome" class="form-input"
+              placeholder="Ex: Ana Oliveira" maxlength="80" autocomplete="name" />
+            <span class="form-erro">Preencha o nome.</span>
+          </div>
+
+          <div class="form-grupo">
+            <label class="form-label" for="campo-instituicao">
+              Instituição <span class="obrigatorio">*</span>
+            </label>
+            <input type="text" id="campo-instituicao" class="form-input"
+              placeholder="Ex: Defesa Civil de Corumbá" maxlength="80" />
+            <span class="form-erro">Preencha a instituição.</span>
+          </div>
+
+        </div>
+
+        <!-- LINHA 2: E-mail -->
+        <div class="form-grupo">
+          <label class="form-label" for="campo-email">
+            E-mail institucional <span class="obrigatorio">*</span>
+          </label>
+          <input type="email" id="campo-email" class="form-input"
+            placeholder="voce@prefeitura.gov.br" maxlength="120" autocomplete="email" />
+          <span class="form-erro">Insira um e-mail válido.</span>
+        </div>
+
+        <!-- LINHA 3: Estado e Tipo de alerta -->
+        <div class="form-duplo">
+
+          <div class="form-grupo">
+            <label class="form-label" for="campo-estado">
+              Estado <span class="obrigatorio">*</span>
+            </label>
+            <select id="campo-estado" class="form-select">
+              <option value="">Selecione...</option>
+              <option>AC</option><option>AL</option><option>AM</option>
+              <option>AP</option><option>BA</option><option>CE</option>
+              <option>DF</option><option>ES</option><option>GO</option>
+              <option>MA</option><option>MG</option><option>MS</option>
+              <option>MT</option><option>PA</option><option>PB</option>
+              <option>PE</option><option>PI</option><option>PR</option>
+              <option>RJ</option><option>RN</option><option>RO</option>
+              <option>RR</option><option>RS</option><option>SC</option>
+              <option>SE</option><option>SP</option><option>TO</option>
+            </select>
+            <span class="form-erro">Selecione um estado.</span>
+          </div>
+
+          <div class="form-grupo">
+            <label class="form-label" for="campo-tipo-alerta">
+              Tipo de alerta <span class="obrigatorio">*</span>
+            </label>
+            <select id="campo-tipo-alerta" class="form-select">
+              <option value="">Selecione...</option>
+              <option value="queimada">Queimadas</option>
+              <option value="enchente">Enchentes</option>
+              <option value="deslizamento">Deslizamentos</option>
+              <option value="todos">Todos os eventos</option>
+            </select>
+            <span class="form-erro">Selecione um tipo.</span>
+          </div>
+
+        </div>
+
+        <!-- LINHA 4: Mensagem -->
+        <div class="form-grupo">
+          <label class="form-label" for="campo-mensagem">
+            Descreva sua necessidade <span class="obrigatorio">*</span>
+          </label>
+          <textarea id="campo-mensagem" class="form-textarea"
+            placeholder="Ex: Precisamos de alertas de queimada com localização precisa para acionar brigadistas rapidamente..."
+            maxlength="400"></textarea>
+          <span class="form-erro">Mínimo de 2 caracteres.</span>
+        </div>
+
+        <button type="submit" id="form-btn-enviar" class="form-btn-enviar">
+          Cadastrar para Receber Alertas
+        </button>
+
+      </form>
+
+      <!-- Mensagem de sucesso — oculta antes do envio válido -->
+      <div id="form-sucesso" class="form-sucesso">
+        <span class="form-sucesso-icone"></span>
+        <h3>Cadastro realizado!</h3>
+        <p>Em breve você receberá alertas de risco da sua região direto dos nossos satélites monitorando o Brasil.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUIZ INTERATIVO -->
+  <section id="quiz" class="secao">
+    <div class="container">
+      <span class="secao-num">08</span>
+      <h2 class="secao-titulo">Quiz</h2>
+      <p class="secao-sub">10 perguntas sobre satélites, desastres e o OrbitMax Sentinel.</p>
+
+      <!-- Placar fixo no topo do quiz ( Também o resultado Final) -->
+      <div class="quiz-placar">
+        <div class="quiz-placar-item">
+          Pergunta <strong id="quiz-num-pergunta-placar">1</strong>/10
+        </div>
+        <div class="quiz-placar-item">
+          Acertos: <strong id="quiz-acertos-placar">0</strong>
+        </div>
+        <div class="quiz-placar-item">
+          Erros: <strong id="quiz-erros-placar">0</strong>
+        </div>
+      </div>
+
+      <!-- Barra de progresso — largura atualizada pelo JS -->
+      <div class="quiz-barra-fundo">
+        <div class="quiz-barra-fill" id="quiz-barra-fill"></div>
+      </div>
+
+      <!-- Card onde a pergunta e opções são injetadas pelo JS -->
+      <div id="quiz-card-ativo"></div>
+
+      <!-- Tela de resultado final -->
+      <div class="quiz-resultado" id="quiz-resultado">
+        <span class="quiz-resultado-emoji" id="quiz-resultado-emoji"></span>
+        <h3>Quiz concluído!</h3>
+        <p id="quiz-resultado-msg"></p>
+        <button class="quiz-btn-reiniciar" onclick="reiniciarQuiz()">Recomeçar</button>
+      </div>
+
+    </div>
+  </section>
+
   <!-- RODAPÉ -->
   <footer id="rodape">
     <div class="container">
@@ -397,7 +548,7 @@
         </div>
         <div class="integrante">
           <span>Bruno Araújo Castro</span>
-          <span class="rm">RM: </span>
+          <span class="rm">RM:572723</span>
         </div>
         <div class="integrante">
           <span>Artur de Novazzi Maia</span>
@@ -413,6 +564,7 @@
   </footer>
 
   <script src="./src/js/behaviour.js"></script>
+  <script src="./src/js/formulario-quiz.js"></script>
 
 </body>
 </html>

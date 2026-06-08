@@ -113,7 +113,9 @@ let eventos = [];
 let imagens = [
   'https://data.statesmanjournal.com/media/uploads/fires.jpg',
   'https://infoamazonia.org/wp-content/uploads/2022/08/fabio-bispo-fogo-amazonia-4-1200x800.jpg',
-  
+  'https://tribunadoplanalto.com.br/wp-content/uploads/2024/07/queimada-lixo-domestico.jpg',
+  'https://files.cdn-files-a.com/uploads/2404059/2000_gi-674def0e898d1.jpg',
+  'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOk_bAHlD18T12s5TPDmI3FLrTc9M-7ztMGMm_9KKWYC_KSEl_wG-q5ysbmfckpCfz6OQsFJJJ6XkkxRa6iJLDQy_xk8exaLVunvdEn21nqkMId3dFktjb9LeQI9NoTRwTMVhaRVKtTwU/s1600/SAM_0624.JPG'
 ];
 
 async function carregarEventos() {
