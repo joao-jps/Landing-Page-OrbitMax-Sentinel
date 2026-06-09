@@ -113,13 +113,15 @@ let eventos = [];
 let imagens = [
   'https://data.statesmanjournal.com/media/uploads/fires.jpg',
   'https://infoamazonia.org/wp-content/uploads/2022/08/fabio-bispo-fogo-amazonia-4-1200x800.jpg',
-  
+  'https://tribunadoplanalto.com.br/wp-content/uploads/2024/07/queimada-lixo-domestico.jpg',
+  'https://files.cdn-files-a.com/uploads/2404059/2000_gi-674def0e898d1.jpg',
+  'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOk_bAHlD18T12s5TPDmI3FLrTc9M-7ztMGMm_9KKWYC_KSEl_wG-q5ysbmfckpCfz6OQsFJJJ6XkkxRa6iJLDQy_xk8exaLVunvdEn21nqkMId3dFktjb9LeQI9NoTRwTMVhaRVKtTwU/s1600/SAM_0624.JPG'
 ];
 
 async function carregarEventos() {
     try {
         const resposta = await fetch(
-            "https://eonet.gsfc.nasa.gov/api/v3/events?status=open"
+          "https://eonet.gsfc.nasa.gov/api/v3/events?status=open"
         );
 
         const dados = await resposta.json();
@@ -135,7 +137,7 @@ async function carregarEventos() {
         mostrarSlide();
 
     } catch (erro) {
-        console.error("Erro ao buscar eventos:", erro);
+        console.log("Erro ao buscar eventos:", erro);
     }
 }
 
@@ -173,11 +175,48 @@ btnPrev.addEventListener("click", () => {
 
 carregarEventos();
 
+// TROCA DE TEMA
+function iniciarTrocaTema() {
+  console.log("[Tema] Iniciando troca de tema.");
+ 
+  const botoes = document.querySelectorAll(".btn-tema");
+ 
+  // Aplica o tema: coloca a classe certa no body e marca o botão ativo
+  function aplicarTema(nomeTema) {
+    // Remove qualquer tema anterior
+    document.body.classList.remove("tema-escuro", "tema-azul", "tema-branco");
+ 
+    // Adiciona o tema escolhido
+    document.body.classList.add("tema-" + nomeTema);
+ 
+    // Atualiza o botão ativo
+    botoes.forEach(function(btn) {
+      btn.classList.toggle("ativo", btn.dataset.tema === nomeTema);
+    });
+ 
+    localStorage.setItem("orbitmax-tema", nomeTema);
+    console.log(`[Tema] Tema aplicado: "${nomeTema}"`);
+  }
+ 
+  // Clique em cada botão
+  botoes.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      aplicarTema(btn.dataset.tema);
+    });
+  });
+ 
+  // Restaura o tema salvo ou usa escuro como padrão
+  const temaSalvo = localStorage.getItem("orbitmax-tema") || "escuro";
+  aplicarTema(temaSalvo);
+ 
+  console.log("[Tema] Pronto.");
+}
+
 // INICIALIZAÇÃO — chama tudo quando o HTML carregar
 document.addEventListener("DOMContentLoaded", function() {
   iniciarEstrelas();
   iniciarNavegacao();
   iniciarAcordeao();
   iniciarBarras();
-  iniciarSlideshow();
+  iniciarTrocaTema();
 });

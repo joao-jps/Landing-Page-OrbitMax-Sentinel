@@ -1,49 +1,35 @@
 Foi requisitado para a IA Claude a criação, animação e responsividade das estrelas utilizadas na seção inicial da página, e para isso foi utilizada a biblioteca Math
 
-Foi retornado pela IA o seguinte código: 
+Foi retornado pela IA: a function iniciarEstrelas() completa;
 
-function iniciarEstrelas() {
+Foi requisitado a IA os degradês utilizados na landing page
 
-  const canvas = document.getElementById("canvas-estrelas");
-  let ctx = canvas.getContext("2d");
+Foi requisitado a IA a nomenclação da classe inicial (hero) em style.css
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+foi requisitado a IA a validação das informações presentes no formulário
 
-  let estrelas = [];
+Foi retornado o sistema de validação em formulario-quiz.js;
 
-  for (let i = 0; i < 200; i++) {
-    estrelas.push({
-      x: Math.random() * canvas.width,       // largura aleatória 
-      y: Math.random() * canvas.height,      // altura aleatória 
-      tamanho: Math.random() * 1.4 + 0.2,   // tamanho entre 0.2 e 1.6
-      brilho: Math.random(),                 // opacidade inicial aleatória
-      velocidade: Math.random() * 0.006 + 0.001 // velocidade q pisca 
-    });
-  }
+Foi pedido a IA a separação CSS entre arquivos
 
-  function desenharEstrelas() {
+Foi pedido a IA a integração do código quiz.js e formulario.js
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+Foi retornado o arquivo formulario-quiz.js;
 
-    estrelas.forEach(function(estrela) {
+Foi requisitado a IA a criação das animações complexas de preenchimento em barras
 
-      estrela.brilho += estrela.velocidade;
-      var opacidade = (Math.sin(estrela.brilho) + 1) / 2;
+Foi retornado: .quiz-barra-fill e .quiz-barra-fundo;
 
-      ctx.beginPath();
-      ctx.arc(estrela.x, estrela.y, estrela.tamanho, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(226, 232, 240, " + opacidade + ")";
-      ctx.fill();
-    });
+Foi requisitado a IA a pré estrutura de chamada de API com fetch
 
-    requestAnimationFrame(desenharEstrelas);
-  }
+Foi retornado asycn function carregarEventos();
 
-  desenharEstrelas();
+Foi requisitado a IA a coleta dos dados preenchidos no formulario para o console log
 
-  window.addEventListener("resize", function() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
-}
+Foi requisitado a IA a utilização de REM e VW como parametro de medidas em arquivos CSS
+
+Foi requisitado a IA a estilização das seleções presentes no formulário para q a aba de seleção apareça para baixo e n para cima (.form select)
+
+Foi requisitado a IA a correção das funções relcaiondas ao quiz e ao formulário
+
+Foi requisitado a IA a implementação de console.log ao código

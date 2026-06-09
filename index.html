@@ -10,16 +10,28 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500&display=swap" rel="stylesheet" />
 
-          <!-- Estilos CSS  -->
+          <!-- CHAMADAS CSS  -->
   <link rel="stylesheet" href="./src/css/style.css">
   <link rel="stylesheet" href="./src/css/efeitos.css">
+  <link rel="stylesheet" href="./src/css/formulario.css">
+  <link rel="stylesheet" href="./src/css/quiz.css">
 </head>
 
 <body>
-
   <!-- NAVEGAÇÃO ( Links )-->
+   <!-- Rodapé para voltar ao inicio e logo -->
   <nav id="nav">
-    <div class="nav-logo">OrbitMax <strong>Sentinel</strong></div>
+    <div class="nav-logo">
+      <a href="#hero">OrbitMax <strong>Sentinel</strong></a>
+    </div>
+    
+     <!-- Botões de troca de tema — JS em formulario-quiz.js -->
+    <div class="nav-temas">
+      <button class="btn-tema ativo" data-tema="escuro"  title="Tema Escuro">Dark Theme</button>
+      <button class="btn-tema"       data-tema="azul"    title="Tema Azul">Blue Theme</button>
+      <button class="btn-tema"       data-tema="branco" title="Tema Claro">Light Theme</button>
+    </div>
+
     <ul class="nav-links">
       <li><a href="#problema">Problema</a></li>
       <li><a href="#tecnologia">Tecnologia</a></li>
@@ -27,6 +39,8 @@
       <li><a href="#publico">Público-Alvo</a></li>
       <li><a href="#beneficios">Benefícios</a></li>
       <li><a href="#dia-a-dia">No Dia a Dia</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><a href="#quiz">Quiz</a></li>
     </ul>
   </nav>
 
@@ -46,11 +60,13 @@
         <span class="titulo-gradiente">Sentinel</span>
       </h1>
 
-      <p class="hero-sub">Monitoramento de desastres naturais via dados satelitais.</p>
+      <p class="hero-sub">Monitoramento de queimadas via dados satelitais.</p>
 
       <a href="#problema" class="btn-hero">Explorar a Solução</a>
     </div>
+
   </section>
+
 
   <!-- PROBLEMA -->
   <section id="problema" class="secao">
@@ -77,7 +93,7 @@
 
         <div class="numero-item">
           <strong>+150 mil</strong>
-          <span>desabrigados no RS em 2024</span>
+          <span>desabrigados por queimadas</span>
         </div>
 
         <div class="numero-item">
@@ -86,7 +102,7 @@
         </div>
 
         <div class="numero-item">
-          <strong>3,8 mi ha</strong>
+          <strong>3,8 mi hectáres</strong>
           <span>queimados no Pantanal</span>
         </div>
 
@@ -100,7 +116,7 @@
     <div class="container">
       <span class="secao-num">02</span>
       <h2 class="secao-titulo">Tecnologias</h2>
-      <p class="secao-sub">APIs abertas + Python + Arduino + Web = alertas acessíveis.</p>
+      <h4 class="secao-sub">APIs abertas + Python + Arduino + Web = alertas acessíveis.</h4>
 
       <!-- Cards clicáveis — abrem e fecham via JavaScript -->
       <div class="grade-2" id="lista-tecnologias">
@@ -111,7 +127,7 @@
             <span class="seta">+</span>
           </div>
           <div class="card-tech-corpo">
-            <p>NASA FIRMS detecta focos de calor em tempo real. NASA EONET registra eventos climáticos extremos. INPE monitora o Brasil inteiro. Tudo via API pública e gratuita.</p>
+            <span>Satélites monitoram focos de calor e eventos ambientais em tempo real, APIs públicas fornecem dados atualizados para análise e prevenção.</span>
             <div class="tags">
               <span class="tag">NASA FIRMS</span>
               <span class="tag">NASA EONET</span>
@@ -126,8 +142,7 @@
             <span class="seta">+</span>
           </div>
           <div class="card-tech-corpo">
-            <p>Modelagem Matemática (Python)<br>
-             As funções matemáticas processam os dados ambientais recebidos pelo sistema, realizando projeções de desmatamento, análise sazonal de queimadas e estimativas de impacto ambiental. Os algoritmos em Python executam os cálculos, geram gráficos e fornecem informações para apoiar a tomada de decisão.</p>
+            <span>Python processa dados ambientais e identifica padrões de risco, os resultados apoiam decisões rápidas durante emergências ambientais.</span>
             <div class="tags">
               <span class="tag">Python 3</span>
               <span class="tag">requests</span>
@@ -142,7 +157,7 @@
             <span class="seta">+</span>
           </div>
           <div class="card-tech-corpo">
-            <p>Protótipo com Arduino UNO simula estação de alerta local devido a fumaça gerada pela queimada, servidor gerado em python detecta e confirma a gravidade da situação: LED vermelho para risco crítico, buzzer sonoro e display LCD. Funciona sem internet estável.</p>
+            <span>Arduino recebe informações processadas e gera alertas locais imediatos.</span>
             <div class="tags">
               <span class="tag">Arduino Uno</span>
               <span class="tag">LED RGB</span>
@@ -157,7 +172,7 @@
             <span class="seta">+</span>
           </div>
           <div class="card-tech-corpo">
-            <p>Interface web exibe alertas ativos, histórico de eventos e dados de satélite em tempo real. JavaScript puro, sem frameworks. Responsivo.</p>
+            <h5>O dashboard apresenta eventos ambientais e informações atualizadas, os usuários acompanham alertas e realizam cadastros pelo sistema.</h5>
             <div class="tags">
               <span class="tag">HTML5</span>
               <span class="tag">CSS3</span>
@@ -175,15 +190,13 @@
     <div class="container">
       <span class="secao-num">03</span>
       <h2 class="secao-titulo">Objetivos</h2>
-      <p class="secao-sub">O que o OrbitMax Sentinel quer alcançar.</p>
 
       <div class="lista-objetivos">
 
         <div class="objetivo">
           <div class="objetivo-num">01</div>
           <div class="objetivo-texto">
-            <h3>Democratizar dados satelitais</h3>
-            <p>Transformar dados brutos da NASA e INPE em alertas simples para qualquer cidadão.</p>
+            <h3>Tornar dados satelitais e climáticos acessíveis</h3>
           </div>
           <span class="ods ods-13">ODS 13</span>
         </div>
@@ -192,7 +205,6 @@
           <div class="objetivo-num">02</div>
           <div class="objetivo-texto">
             <h3>Antecipar desastres no Brasil</h3>
-            <p>Emitir alertas precoces para enchentes, queimadas e deslizamentos.</p>
           </div>
           <span class="ods ods-11">ODS 11</span>
         </div>
@@ -201,7 +213,6 @@
           <div class="objetivo-num">03</div>
           <div class="objetivo-texto">
             <h3>Integrar tecnologia espacial ao cotidiano</h3>
-            <p>Qualquer município pode usar dados de satélite — não só agências governamentais.</p>
           </div>
           <span class="ods ods-9">ODS 9</span>
         </div>
@@ -209,8 +220,7 @@
         <div class="objetivo">
           <div class="objetivo-num">04</div>
           <div class="objetivo-texto">
-            <h3>Reduzir desigualdade no acesso à informação</h3>
-            <p>Comunidades remotas são as mais vulneráveis e as que menos recebem alertas.</p>
+            <h3>Reduzir desigualdade no acesso à informação espacial e climática</h3>
           </div>
           <span class="ods ods-10">ODS 10</span>
         </div>
@@ -224,23 +234,22 @@
     <div class="container">
       <span class="secao-num">04</span>
       <h2 class="secao-titulo">Público-Alvo</h2>
-      <p class="secao-sub">Quem a solução protege e quem a opera.</p>
 
       <div class="grade-3">
 
         <div class="card card-publico">
           <h3>Defesa Civil</h3>
-          <p>Gestores que precisam de painel unificado para coordenar evacuações e resposta a desastres.</p>
+          <p>Gestores que precisam de painel unificado para coordenar evacuações e resposta a queimadas.</p>
         </div>
 
         <div class="card card-publico card-destaque">
           <h3>Comunidades em Risco</h3>
-          <p>Moradores de encostas, rios e zonas de mata que precisam de aviso prévio simples e acessível.</p>
+          <h4>Moradores de encostas, rios e zonas de mata que precisam de aviso prévio simples e acessível.</h4>
         </div>
 
         <div class="card card-publico">
           <h3>Pesquisadores e ONGs</h3>
-          <p>Cientistas e organizações que precisam de dados históricos para análise e advocacy climático.</p>
+          <p>Cientistas e organizações que precisam de dados climáticos para análise e estudo.</p>
         </div>
 
       </div>
@@ -252,7 +261,6 @@
     <div class="container">
       <span class="secao-num">05</span>
       <h2 class="secao-titulo">Benefícios</h2>
-      <p class="secao-sub">O que muda quando o espaço fala com quem precisa.</p>
 
       <!-- Barras animadas pelo JavaScript ao entrar na tela -->
       <div class="lista-barras" id="lista-barras">
@@ -260,31 +268,29 @@
         <div class="barra-item">
           <div class="barra-info">
             <span class="barra-titulo">Velocidade de alerta</span>
-            <span class="barra-valor">85%</span>
+            <span class="barra-valor">Aumento de 85%</span>
           </div>
 
           <div class="barra-track">
             <div class="barra-fill" data-porcentagem="85"></div>
           </div>
-          <p class="barra-desc">mais rápido que métodos tradicionais</p>
         </div>
 
         <div class="barra-item">
           <div class="barra-info">
-            <span class="barra-titulo">Cobertura territorial</span>
-            <span class="barra-valor">100%</span>
+            <span class="barra-titulo">Maior Cobertura e Monitoriamento territorial</span>
+            <span class="barra-valor">90% do Brasil coberto por satélites</span>
           </div>
 
           <div class="barra-track">
             <div class="barra-fill" data-porcentagem="100"></div>
           </div>
-          <p class="barra-desc">do Brasil coberto pelos satélites</p>
         </div>
 
         <div class="barra-item">
           <div class="barra-info">
-            <span class="barra-titulo">Redução de mortes</span>
-            <span class="barra-valor">60%</span>
+            <span class="barra-titulo">Redução de mortes por queimadas</span>
+            <span class="barra-valor">em 60%</span>
           </div>
           <div class="barra-track">
             <div class="barra-fill" data-porcentagem="60"></div>
@@ -294,14 +300,14 @@
 
         <div class="barra-item">
           <div class="barra-info">
-            <span class="barra-titulo">Custo de implantação</span>
-            <span class="barra-valor">~R$100</span>
+            <span class="barra-titulo">Menor Custo de implantação</span>
+            <span class="barra-valor">70% Menor</span>
           </div>
 
           <div class="barra-track">
             <div class="barra-fill" data-porcentagem="70"></div>
           </div>
-          <p class="barra-desc">hardware Arduino + APIs gratuitas da NASA</p>
+          <p class="barra-desc">hardware Arduino + APIs gratuitas da NASA. Para Maior facilidade de Acesso</p>
         </div>
 
       </div>
@@ -313,7 +319,7 @@
     <div class="container">
       <span class="secao-num">06</span>
       <h2 class="secao-titulo">No Dia a Dia</h2>
-      <p class="secao-sub">Como funciona na prática com eventos reais.</p>
+      <h4 class="secao-sub">Como funciona na prática com eventos reais.</h4>
 
       <!-- Linha do tempo do fluxo de uso -->
       <div class="linha-tempo">
@@ -330,7 +336,7 @@
           <div class="etapa-circulo">2</div>
           <div class="etapa-conteudo">
             <h3>Python classifica o risco</h3>
-            <p>Script consome a API, calcula o nível de risco e prepara o alerta em ~2 minutos.</p>
+            <p>Script consome a API, detecta e calcula o nível de risco e envia o resultado para o Arduino.</p>
           </div>
         </div>
 
@@ -338,7 +344,6 @@
           <div class="etapa-circulo">3</div>
           <div class="etapa-conteudo">
             <h3>Dashboard atualiza</h3>
-            <p>Gestores da Defesa Civil veem o alerta com localização, nível e recomendação de ação.</p>
           </div>
         </div>
 
@@ -346,11 +351,10 @@
           <div class="etapa-circulo">4</div>
           <div class="etapa-conteudo">
             <h3>Arduino aciona alerta local</h3>
-            <p>LED vermelho, buzzer e LCD na comunidade: "RISCO CRÍTICO — EVACUAR".</p>
           </div>
         </div>
 
-        <img src="./src/assets/imgs/teste1.png" alt="Queimada extrema" class="card" style="height: 40%;">
+        <img src="./src/assets/imgs/teste1.png" alt="Processo No Dia a Dia" class="card" style="height: 30%;">
       </div>
 
       <!-- PAINEL DE EVENTOS NASA EONET — dados reais via API -->
@@ -359,10 +363,9 @@
           <h3> Eventos Reais — NASA EONET</h3>
           <span class="fonte-badge">Fonte: api.nasa.gov</span>
         </div>
-        <p class="painel-api-desc">Eventos naturais ativos agora no planeta, direto da API da NASA:</p>
 
         <!-- Estado de carregamento -->
-        <p id="status-api" class="status-carregando">Buscando eventos da NASA...</p>
+        <h4 id="status-api" class="status-carregando">Buscando eventos da NASA...</h4>
 
 <!-- Slideshow de eventos reais da NASA EONET -->
         <section class="slideshow">
@@ -370,7 +373,6 @@
     
     <div class="slide-info">
         <h2 id="slide-title">Carregando...</h2>
-        <p id="slide-desc"></p>
     </div>
 
     <div class="slide-controls">
@@ -379,6 +381,153 @@
     </div>
 </section>
  
+  </section>
+
+  <!-- FORMULÁRIO DE CONTATO -->
+  <section id="contato" class="secao secao-escura">
+    <div class="container">
+      <span class="secao-num">07</span>
+      <h2 class="secao-titulo">Receba Alertas</h2>
+      <h4 class="secao-sub">Cadastre sua instituição para receber notificações de risco da sua região.</h4>
+
+      <!-- Formulário -->
+      <form id="form-contato" class="form-contato">
+
+        <!-- LINHA 1: Nome e Instituição lado a lado -->
+        <div class="form-duplo">
+
+          <div class="form-grupo">
+            <label class="form-label" for="campo-nome">
+              Nome completo <span class="obrigatorio">*</span>
+            </label>
+            <input type="text" id="campo-nome" class="form-input"
+              placeholder="Ex: Ana Oliveira" maxlength="80" autocomplete="name" />
+            <span class="form-erro">Preencha o nome.</span>
+          </div>
+
+          <div class="form-grupo">
+            <label class="form-label" for="campo-instituicao">
+              Instituição <span class="obrigatorio">*</span>
+            </label>
+            <input type="text" id="campo-instituicao" class="form-input"
+              placeholder="Ex: FIAP" maxlength="80" />
+            <span class="form-erro">Preencha a instituição.</span>
+          </div>
+
+        </div>
+
+        <!-- LINHA 2: E-mail -->
+        <div class="form-grupo">
+          <label class="form-label" for="campo-email">
+            E-mail institucional <span class="obrigatorio">*</span>
+          </label>
+          <input type="email" id="campo-email" class="form-input"
+            placeholder="voce@gmail.com.br" maxlength="120" autocomplete="email" />
+          <span class="form-erro">Insira um e-mail válido.</span>
+        </div>
+
+        <!-- LINHA 3: Estado e Tipo de alerta -->
+        <div class="form-duplo">
+
+          <div class="form-grupo">
+            <label class="form-label" for="campo-estado">
+              Estado <span class="obrigatorio">*</span>
+            </label>
+            <select id="campo-estado" class="form-select">
+              <option value="">Selecione.</option>
+              <option>AC</option><option>AL</option><option>AM</option>
+              <option>AP</option><option>BA</option><option>CE</option>
+              <option>DF</option><option>ES</option><option>GO</option>
+              <option>MA</option><option>MG</option><option>MS</option>
+              <option>MT</option><option>PA</option><option>PB</option>
+              <option>PE</option><option>PI</option><option>PR</option>
+              <option>RJ</option><option>RN</option><option>RO</option>
+              <option>RR</option><option>RS</option><option>SC</option>
+              <option>SE</option><option>SP</option><option>TO</option>
+            </select>
+            <span class="form-erro">Selecione um estado.</span>
+          </div>
+
+          <div class="form-grupo">
+            <label class="form-label" for="campo-tipo-alerta">
+              Tipo de alerta <span class="obrigatorio">*</span>
+            </label>
+            <select id="campo-tipo-alerta" class="form-select">
+              <option value="">Selecione.</option>
+              <option value="queimada">Queimadas</option>
+              <option value="enchente">Enchentes</option>
+              <option value="deslizamento">Deslizamentos</option>
+              <option value="todos">Todos os eventos</option>
+            </select>
+            <span class="form-erro">Selecione um tipo.</span>
+          </div>
+
+        </div>
+
+        <!-- LINHA 4: Mensagem -->
+        <div class="form-grupo">
+          <label class="form-label" for="campo-mensagem">
+            Descreva sua necessidade <span class="obrigatorio">*</span>
+          </label>
+          <textarea id="campo-mensagem" class="form-textarea"
+            placeholder="Ex: Precisamos de alertas de queimada com localização precisa para acionar brigadistas rapidamente..."
+            maxlength="400"></textarea>
+          <span class="form-erro">Mínimo de 2 caracteres.</span>
+        </div>
+
+        <button type="submit" id="form-btn-enviar" class="form-btn-enviar">
+          Cadastrar para Receber Alertas
+        </button>
+
+      </form>
+
+      <!-- Mensagem de sucesso — oculta antes do envio válido -->
+      <div id="form-sucesso" class="form-sucesso">
+        <span class="form-sucesso-icone"></span>
+        <h3>Cadastro realizado!</h3>
+        <p>Em breve você receberá alertas de risco da sua região direto dos nossos satélites monitorando o Brasil.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUIZ INTERATIVO -->
+  <section id="quiz" class="secao">
+    <div class="container">
+      <span class="secao-num">08</span>
+      <h2 class="secao-titulo">Quiz</h2>
+      <p class="secao-sub">10 perguntas sobre satélites, desastres e o OrbitMax Sentinel.</p>
+
+      <!-- Placar fixo no topo do quiz ( Também o resultado Final) -->
+      <div class="quiz-placar">
+        <div class="quiz-placar-item">
+          Pergunta <strong id="quiz-num-pergunta-placar">1</strong>/10
+        </div>
+        <div class="quiz-placar-item">
+          Acertos: <strong id="quiz-acertos-placar">0</strong>
+        </div>
+        <div class="quiz-placar-item">
+          Erros: <strong id="quiz-erros-placar">0</strong>
+        </div>
+      </div>
+
+      <!-- Barra de progresso — largura atualizada pelo JS -->
+      <div class="quiz-barra-fundo">
+        <div class="quiz-barra-fill" id="quiz-barra-fill"></div>
+      </div>
+
+      <!-- Card onde a pergunta e opções são injetadas pelo JS -->
+      <div id="quiz-card-ativo"></div>
+
+      <!-- Tela de resultado final -->
+      <div class="quiz-resultado" id="quiz-resultado">
+        <span class="quiz-resultado-emoji" id="quiz-resultado-emoji"></span>
+        <h3>Quiz concluído!</h3>
+        <p id="quiz-resultado-msg"></p>
+        <button class="quiz-btn-reiniciar" onclick="reiniciarQuiz()">Recomeçar</button>
+      </div>
+
+    </div>
   </section>
 
   <!-- RODAPÉ -->
@@ -397,7 +546,7 @@
         </div>
         <div class="integrante">
           <span>Bruno Araújo Castro</span>
-          <span class="rm">RM: </span>
+          <span class="rm">RM: 572723</span>
         </div>
         <div class="integrante">
           <span>Artur de Novazzi Maia</span>
@@ -413,6 +562,7 @@
   </footer>
 
   <script src="./src/js/behaviour.js"></script>
+  <script src="./src/js/formulario-quiz.js"></script>
 
 </body>
 </html>
