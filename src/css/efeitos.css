@@ -1,7 +1,4 @@
 
-   /* Apenas efeitos visuais
-     Transições, focus, pseudo-elementos, pseudo-classes, animações e hovers
-
 /* NAVEGAÇÃO  */
 
 /* Suaviza a troca de transparente → sólido ao rolar */
@@ -37,8 +34,7 @@
 }
 
 
-/* CARDS PADRÃO
-   (Problema e Público-alvo) */
+/* CARDS PADRÃO (Problema e Público-alvo) */
 
 /* Sobe levemente e muda borda ao passar o mouse */
 .card {
@@ -117,3 +113,10 @@
   border-color: var(--borda-hover);
 }
 
+/* Hover forms */
+
+.form-btn-enviar:hover {
+  background: var(--laranja-claro);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(249, 115, 22, 0.3);
+}

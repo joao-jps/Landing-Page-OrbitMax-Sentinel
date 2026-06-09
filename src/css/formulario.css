@@ -54,9 +54,10 @@
   outline: none;
   width: 100%;
   transition: border-color 0.2s, box-shadow 0.2s;
-  -webkit-appearance: none;
+  -webkit-appearance: none;       /* faz a aba de seleção aparecer pra baixo e n pra cima*/
 }
 
+/* AO CLICAR  */
 .form-input:focus,
 .form-textarea:focus,
 .form-select:focus {
@@ -139,18 +140,11 @@
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
   border: none;
   border-radius: 999px;
   cursor: pointer;
   margin-top: 0.5rem;
   transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-
-.form-btn-enviar:hover {
-  background: var(--laranja-claro);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(249, 115, 22, 0.3);
 }
 
 .form-btn-enviar:disabled {

@@ -18,4 +18,3 @@ Foi retornado: .quiz-barra-fill e .quiz-barra-fundo;
 
 Foi requisitado a IA a pré estrutura de chamada de API com fetch
 
-Foi retornado asycn function carregarEventos();

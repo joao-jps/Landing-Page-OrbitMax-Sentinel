@@ -121,7 +121,7 @@ let imagens = [
 async function carregarEventos() {
     try {
         const resposta = await fetch(
-            "https://eonet.gsfc.nasa.gov/api/v3/events?status=open"
+          "https://eonet.gsfc.nasa.gov/api/v3/events?status=open"
         );
 
         const dados = await resposta.json();
@@ -137,7 +137,7 @@ async function carregarEventos() {
         mostrarSlide();
 
     } catch (erro) {
-        console.error("Erro ao buscar eventos:", erro);
+        console.log("Erro ao buscar eventos:", erro);
     }
 }
 
@@ -181,5 +181,4 @@ document.addEventListener("DOMContentLoaded", function() {
   iniciarNavegacao();
   iniciarAcordeao();
   iniciarBarras();
-  iniciarSlideshow();
 });

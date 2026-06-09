@@ -1,44 +1,48 @@
 
 // FORMULÁRIO DE CONTATO
 // Valida cada campo antes de permitir o envio.
+// Nenhum campo pode estar vazio; e-mail precisa ter formato válido.
 
 function iniciarFormulario() {
-
-  const form     = document.getElementById("form-contato");
-  const sucesso  = document.getElementById("form-sucesso");
+  console.log("Formulário: Inicializado..");
+  console.log("Formulário: Aguardando interação do usuário.");
+ 
+  const form      = document.getElementById("form-contato");
+  const sucesso   = document.getElementById("form-sucesso");
   const btnEnviar = document.getElementById("form-btn-enviar");
-
+ 
   // Valida um campo de texto: não pode estar vazio (mínimo 2 chars)
   function validarTexto(idCampo) {
-    var campo  = document.getElementById(idCampo);
-    var grupo  = campo.closest(".form-grupo");
-    var valido = campo.value.trim().length >= 2;
-
+    const campo  = document.getElementById(idCampo);
+    const grupo  = campo.closest(".form-grupo");
+    const valido = campo.value.trim().length >= 2;
+ 
+ 
     aplicarEstado(campo, grupo, valido);
     return valido;
   }
-
-  // Valida e-mail com expressão regular básica
+ 
+  // Valida e-mail: apenas verifica se o campo não está vazio (é uma string preenchida)
   function validarEmail() {
-    var campo  = document.getElementById("campo-email");
-    var grupo  = campo.closest(".form-grupo");
-    var regex  = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-    var valido = regex.test(campo.value.trim());
-
+    const campo  = document.getElementById("campo-email");
+    const grupo  = campo.closest(".form-grupo");
+    const valido = campo.value.trim() !== "";
+ 
+ 
     aplicarEstado(campo, grupo, valido);
     return valido;
   }
-
+ 
   // Valida select: não pode ficar na opção vazia
   function validarSelect(idCampo) {
-    var campo  = document.getElementById(idCampo);
-    var grupo  = campo.closest(".form-grupo");
-    var valido = campo.value !== "";
-
+    const campo  = document.getElementById(idCampo);
+    const grupo  = campo.closest(".form-grupo");
+    const valido = campo.value !== "";
+ 
+ 
     aplicarEstado(campo, grupo, valido);
     return valido;
   }
-
   // Aplica as classes visuais de estado (válido / inválido) no campo e no grupo
   function aplicarEstado(campo, grupo, valido) {
     campo.classList.toggle("valido",   valido);
@@ -48,9 +52,12 @@ function iniciarFormulario() {
 
   // Ouve o submit: roda todas as validações antes de prosseguir
   form.addEventListener("submit", function(evento) {
-    evento.preventDefault();   // impede recarregamento da página
+    evento.preventDefault(); // impede recarregamento da página
+    form.dataset.tentou = "sim"; // ativa validação em tempo real a partir daqui
 
-    var resultados = [
+    console.log("Formulário: Tentativa de envio detectada, validando.");
+
+    const resultados = [
       validarTexto("campo-nome"),
       validarTexto("campo-instituicao"),
       validarEmail(),
@@ -59,54 +66,52 @@ function iniciarFormulario() {
       validarTexto("campo-mensagem")
     ];
 
-    // Só avança se TODOS os campos passaram na validação
-    var tudo_valido = resultados.every(function(r) { return r === true; });
+    // Só avança se todos os campos passaram na validação
+    const tudoValido = resultados.every(function(r) { return r === true; });
 
-    if (!tudo_valido) {
+    if (!tudoValido) {
+      const totalInvalidos = resultados.filter(r => r === false).length;
+      console.warn(`Formulário: Envio bloqueado — ${totalInvalidos} campo(s) inválido(s).`);
+
       // Foca no primeiro campo com problema para acessibilidade
-      var primeiro_invalido = form.querySelector(".invalido");
-      if (primeiro_invalido) primeiro_invalido.focus();
+      const primeiroInvalido = form.querySelector(".invalido");
+      if (primeiroInvalido) primeiroInvalido.focus();
       return;
     }
 
+    // Coleta os dados preenchidos para colocar no console log
+    const dadosFormulario = {
+      nome:        document.getElementById("campo-nome").value.trim(),
+      instituicao: document.getElementById("campo-instituicao").value.trim(),
+      email:       document.getElementById("campo-email").value.trim(),
+      estado:      document.getElementById("campo-estado").value,
+      tipoAlerta:  document.getElementById("campo-tipo-alerta").value,
+      mensagem:    document.getElementById("campo-mensagem").value.trim()
+    };
+
+    console.log("Formulário: Todos os campos válidos.", dadosFormulario);
+
     // Simula envio — em produção seria um fetch POST para a API
-    btnEnviar.textContent = "Enviando...";
+    btnEnviar.textContent = "Enviando.";
     btnEnviar.disabled    = true;
 
     setTimeout(function() {
       form.style.display    = "none";
       sucesso.style.display = "block";
+      console.log("Formulário: Envio concluído com sucesso! Tela de confirmação exibida.");
     }, 1000);
   });
 
-  // Valida campos em tempo real enquanto o usuário digita/altera
-  // (só ativa após a primeira tentativa de envio para não assustar o usuário)
-  ["campo-nome", "campo-instituicao", "campo-mensagem"].forEach(function(id) {
-    document.getElementById(id).addEventListener("input", function() {
-      if (form.dataset.tentou) validarTexto(id);
-    });
-  });
-
-  document.getElementById("campo-email").addEventListener("input", function() {
-    if (form.dataset.tentou) validarEmail();
-  });
-
-  ["campo-estado", "campo-tipo-alerta"].forEach(function(id) {
-    document.getElementById(id).addEventListener("change", function() {
-      if (form.dataset.tentou) validarSelect(id);
-    });
-  });
-
-  // Marca que o usuário tentou enviar — ativa a validação em tempo real
-  form.addEventListener("submit", function() {
-    form.dataset.tentou = "sim";
-  }, { once: false });
+ 
+  
 }
 
-
 // QUIZ INTERATIVO
+// 10 perguntas sobre o tema. Exibe resultado ao final.
 function iniciarQuiz() {
+  console.log("[Quiz] Inicializado.");
 
+  // --- Banco de perguntas ---
   const perguntas = [
     {
       texto: "O que é o NASA FIRMS e para que ele serve?",
@@ -220,25 +225,29 @@ function iniciarQuiz() {
     }
   ];
 
-  // --- Estado do quiz ---
-  var indicePergunta = 0;   // pergunta sendo exibida (0-based)
-  var totalAcertos   = 0;
-  var totalErros     = 0;
+  console.log(`[Quiz] ${perguntas.length} perguntas carregadas.`);
+
+  // --- Estado do quiz (let porque mudam ao longo do jogo) ---
+  let indicePergunta = 0;
+  let totalAcertos   = 0;
+  let totalErros     = 0;
 
   // --- Referências aos elementos fixos do quiz ---
-  var cardAtivo    = document.getElementById("quiz-card-ativo");
-  var tela_resultado = document.getElementById("quiz-resultado");
-  var barraFill    = document.getElementById("quiz-barra-fill");
-  var numPergunta  = document.getElementById("quiz-num-pergunta-placar");
-  var numAcertos   = document.getElementById("quiz-acertos-placar");
-  var numErros     = document.getElementById("quiz-erros-placar");
+  const cardAtivo      = document.getElementById("quiz-card-ativo");
+  const telaResultado  = document.getElementById("quiz-resultado");
+  const barraFill      = document.getElementById("quiz-barra-fill");
+  const numPergunta    = document.getElementById("quiz-num-pergunta-placar");
+  const numAcertos     = document.getElementById("quiz-acertos-placar");
+  const numErros       = document.getElementById("quiz-erros-placar");
 
-  // Letras das alternativas
-  var letras = ["A", "B", "C", "D"];
+  // Letras das alternativas (const porque nunca muda)
+  const letras = ["A", "B", "C", "D"];
 
   // Renderiza a pergunta atual no card
   function renderizarPergunta() {
-    var p = perguntas[indicePergunta];
+    const p = perguntas[indicePergunta];
+
+    console.log(`[Quiz] Renderizando pergunta ${indicePergunta + 1}/${perguntas.length}: "${p.texto}"`);
 
     // Atualiza placar e barra de progresso
     numPergunta.textContent = indicePergunta + 1;
@@ -252,18 +261,18 @@ function iniciarQuiz() {
         '<div class="quiz-opcoes" id="quiz-opcoes"></div>' +
         '<div class="quiz-explicacao" id="quiz-explicacao">' + p.explicacao + '</div>' +
         '<button class="quiz-btn-proxima" id="quiz-btn-proxima">' +
-          (indicePergunta < perguntas.length - 1 ? 'Próxima ' : 'Ver resultado ') +
+          (indicePergunta < perguntas.length - 1 ? 'Próxima ' : 'Ver resultado.') +
         '</button>' +
       '</div>';
 
     // Cria os botões de opção
-    var containerOpcoes = document.getElementById("quiz-opcoes");
+    const containerOpcoes = document.getElementById("quiz-opcoes");
 
-    p.opcoes.forEach(function(texto, i) {
-      var btn = document.createElement("button");
-      btn.className = "quiz-opcao";
+    p.opcoes.forEach(function(textoOpcao, i) {
+      const btn = document.createElement("button");
+      btn.className      = "quiz-opcao";
       btn.dataset.indice = i;
-      btn.innerHTML = '<span class="opcao-letra">' + letras[i] + '</span>' + texto;
+      btn.innerHTML      = '<span class="opcao-letra">' + letras[i] + '</span>' + textoOpcao;
       btn.addEventListener("click", function() { processarResposta(i); });
       containerOpcoes.appendChild(btn);
     });
@@ -274,11 +283,16 @@ function iniciarQuiz() {
 
   // Processa a resposta clicada pelo usuário
   function processarResposta(indiceEscolhido) {
-    var p          = perguntas[indicePergunta];
-    var botoes     = document.querySelectorAll(".quiz-opcao");
-    var explicacao = document.getElementById("quiz-explicacao");
-    var btnProxima = document.getElementById("quiz-btn-proxima");
-    var acertou    = indiceEscolhido === p.indiceCorreto;
+    const p          = perguntas[indicePergunta];
+    const botoes     = document.querySelectorAll(".quiz-opcao");
+    const explicacao = document.getElementById("quiz-explicacao");
+    const btnProxima = document.getElementById("quiz-btn-proxima");
+    const acertou    = indiceEscolhido === p.indiceCorreto;
+    const letraEscolhida = letras[indiceEscolhido];
+    const letraCorreta   = letras[p.indiceCorreto];
+
+    console.log(`[Quiz] Pergunta ${indicePergunta + 1} — Usuário escolheu opção ${letraEscolhida}: "${p.opcoes[indiceEscolhido]}"`);
+    console.log(`[Quiz] Resposta ${acertou ? "CORRETA" : `INCORRETA (correta era ${letraCorreta}: "${p.opcoes[p.indiceCorreto]}")`}`);
 
     // Desabilita todos os botões para evitar múltipla escolha
     botoes.forEach(function(btn) { btn.disabled = true; });
@@ -302,6 +316,8 @@ function iniciarQuiz() {
       numErros.className   = "erros";
     }
 
+    console.log(`[Quiz] Placar atual → Acertos: ${totalAcertos} | Erros: ${totalErros}`);
+
     // Exibe a explicação com estilo adequado (acerto/erro)
     explicacao.classList.add(acertou ? "acerto" : "erro");
     explicacao.style.display = "block";
@@ -312,6 +328,7 @@ function iniciarQuiz() {
 
   // Avança para a próxima pergunta ou exibe o resultado final
   function avancarPergunta() {
+    console.log(`[Quiz] Usuário avançou da pergunta ${indicePergunta + 1}`);
     indicePergunta++;
 
     if (indicePergunta < perguntas.length) {
@@ -323,14 +340,14 @@ function iniciarQuiz() {
 
   // Exibe a tela de resultado com pontuação e mensagem personalizada
   function exibirResultado() {
-    cardAtivo.style.display       = "none";
-    tela_resultado.style.display  = "block";
-    barraFill.style.width         = "100%";
+    cardAtivo.style.display      = "none";
+    telaResultado.style.display  = "block";
+    barraFill.style.width        = "100%";
 
-    var aproveitamento = Math.round((totalAcertos / perguntas.length) * 100);
+    const aproveitamento = Math.round((totalAcertos / perguntas.length) * 100);
 
-    // Emoji e mensagem variam conforme o desempenho
-    var mensagem;
+    // mensagem varia conforme o desempenho
+    let mensagem;
 
     if (aproveitamento === 100) {
       mensagem = "Perfeito! Você domina todos os conceitos do OrbitMax Sentinel.";
@@ -342,38 +359,46 @@ function iniciarQuiz() {
       mensagem = "Continue explorando! Leia sobre NASA FIRMS, INPE e tecnologia espacial.";
     }
 
-    document.getElementById("quiz-resultado-emoji").textContent  = emoji;
+    console.log(`[Quiz] Quiz finalizado!`);
+    console.log(`[Quiz] Resultado → ${totalAcertos}/${perguntas.length} acertos (${aproveitamento}%)`);
+    console.log(`[Quiz] Classificação → ${mensagem}`);
+
     document.getElementById("quiz-resultado-pontos").textContent = totalAcertos + "/" + perguntas.length;
     document.getElementById("quiz-resultado-msg").textContent    = mensagem;
   }
 
   // Reinicia o quiz do zero
   function reiniciarQuiz() {
+    console.log("[Quiz] Reiniciando quiz.");
+
     indicePergunta = 0;
     totalAcertos   = 0;
     totalErros     = 0;
 
-    numAcertos.textContent        = "0";
-    numErros.textContent          = "0";
-    numPergunta.textContent       = "1";
-    numAcertos.className          = "";
-    numErros.className            = "";
-    tela_resultado.style.display  = "none";
-    cardAtivo.style.display       = "block";
+    numAcertos.textContent       = "0";
+    numErros.textContent         = "0";
+    numPergunta.textContent      = "1";
+    numAcertos.className         = "";
+    numErros.className           = "";
+    telaResultado.style.display  = "none";
+    cardAtivo.style.display      = "block";
 
+    console.log("[Quiz] Estado resetado. Reiniciando da pergunta 1.");
     renderizarPergunta();
   }
 
   // Expõe reiniciarQuiz no escopo global para o onclick do botão no HTML
   window.reiniciarQuiz = reiniciarQuiz;
 
-  // Inicializa o quiz
+  // Inicializar o quiz
   renderizarPergunta();
+  console.log("[Quiz] Pronto. Aguardando interação do usuário.");
 }
 
-
-// INICIALIZAÇÃO — 
+// INICIALIZAÇÃO — igual ao padrão do behaviour.js
 document.addEventListener("DOMContentLoaded", function() {
+  console.log("DOM carregado. Iniciando formulário e quiz.");
   iniciarFormulario();
   iniciarQuiz();
+  console.log("OrbitMax Sentinel pronta para uso.");
 });
