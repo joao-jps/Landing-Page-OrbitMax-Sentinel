@@ -54,7 +54,6 @@
   outline: none;
   width: 100%;
   transition: border-color 0.2s, box-shadow 0.2s;
-  -webkit-appearance: none;       /* faz a aba de seleção aparecer pra baixo e n pra cima*/
 }
 
 /* AO CLICAR  */
