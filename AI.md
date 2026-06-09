@@ -36,3 +36,4 @@ Foi requisitado a IA a implementação de console.log ao behaviour.js
 
 Foi requisitado a IA a implementação de comentários no código JS e nos códigos CSS
 
+Foi requisitado a IA a animação de particulas de estrelas ao longo do site
