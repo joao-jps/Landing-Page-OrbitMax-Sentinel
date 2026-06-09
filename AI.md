@@ -32,4 +32,7 @@ Foi requisitado a IA a estilização das seleções presentes no formulário par
 
 Foi requisitado a IA a correção das funções relcaiondas ao quiz e ao formulário
 
-Foi requisitado a IA a implementação de console.log ao código
+Foi requisitado a IA a implementação de console.log ao behaviour.js
+
+Foi requisitado a IA a implementação de comentários no código JS e nos códigos CSS
+
