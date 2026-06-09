@@ -29,3 +29,7 @@ Foi requisitado a IA a coleta dos dados preenchidos no formulario para o console
 Foi requisitado a IA a utilização de REM e VW como parametro de medidas em arquivos CSS
 
 Foi requisitado a IA a estilização das seleções presentes no formulário para q a aba de seleção apareça para baixo e n para cima (.form select)
+
+Foi requisitado a IA a correção das funções relcaiondas ao quiz e ao formulário
+
+Foi requisitado a IA a implementação de console.log ao código
