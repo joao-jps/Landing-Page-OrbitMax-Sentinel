@@ -18,3 +18,10 @@ Foi retornado: .quiz-barra-fill e .quiz-barra-fundo;
 
 Foi requisitado a IA a pré estrutura de chamada de API com fetch
 
+Foi retornado asycn function carregarEventos();
+
+Foi requisitado a IA a coleta dos dados preenchidos no formulario para o console log
+
+Foi requisitado a IA a utilização de rem como parametro em arquivos CSS
+
+Foi requisitado a IA a estilização das seleções presentes no formulário para q a aba de seleção apareça para baixo e n para cima (.form select)
