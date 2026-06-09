@@ -1,6 +1,4 @@
-
 // Conceitos: DOM, Arrays, Objetos, Fetch
-
 // 1. ESTRELAS NO HERO
 
 function iniciarEstrelas() {
@@ -80,7 +78,6 @@ function iniciarAcordeao() {
   // Primeiro card começa aberto
   if (cards.length > 0) cards[0].classList.add("aberto");
 }
-
 
 // BARRAS DE BENEFÍCIOS
 function iniciarBarras() {

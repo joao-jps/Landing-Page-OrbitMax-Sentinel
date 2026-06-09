@@ -1,4 +1,3 @@
-
 // FORMULÁRIO DE CONTATO
 // Valida cada campo antes de permitir o envio.
 // Nenhum campo pode estar vazio; e-mail precisa ter formato válido.
@@ -17,7 +16,6 @@ function iniciarFormulario() {
     const grupo  = campo.closest(".form-grupo");
     const valido = campo.value.trim().length >= 2;
  
- 
     aplicarEstado(campo, grupo, valido);
     return valido;
   }
@@ -27,7 +25,6 @@ function iniciarFormulario() {
     const campo  = document.getElementById("campo-email");
     const grupo  = campo.closest(".form-grupo");
     const valido = campo.value.trim() !== "";
- 
  
     aplicarEstado(campo, grupo, valido);
     return valido;
@@ -102,8 +99,6 @@ function iniciarFormulario() {
     }, 1000);
   });
 
- 
-  
 }
 
 // QUIZ INTERATIVO

@@ -4,13 +4,11 @@
   background: var(--fundo-alt);
 }
 
-
 /* formulário Centralizado com largura máxima para não esticar demais em telas largas */
 .form-contato {
   max-width: 680px;
   margin: 0 auto;
 }
-
 
 /* GRUPO DE CAMPO
    Envolve label + input + mensagem de erro.
@@ -22,7 +20,6 @@
   margin-bottom: 1.4rem;
   position: relative;
 }
-
 
 /* LABEL */
 .form-label {
@@ -38,7 +35,6 @@
   color: var(--laranja);
   margin-left: 2px;
 }
-
 
 /* INPUT E TEXTAREA — base compartilhada */
 .form-input,
@@ -98,7 +94,6 @@
   color: var(--texto);
 }
 
-
 /* MENSAGEM DE ERRO abaixo do campo, é chamada pelo JS caso necessário */
 .form-erro {
   display: none;
@@ -113,7 +108,6 @@
   display: block;
 }
 
-
 /* CAMPOS LADO A LADO
    Dois inputs na mesma linha em telas largas */
 .form-duplo {
@@ -127,7 +121,6 @@
     grid-template-columns: 1fr;
   }
 }
-
 
 /* BOTÃO DE ENVIO */
 .form-btn-enviar {
@@ -151,7 +144,6 @@
   cursor: not-allowed;
   transform: none;
 }
-
 
 /* MENSAGEM DE SUCESSO
    Exibida pelo JS após envio válido; oculta antes disso */
