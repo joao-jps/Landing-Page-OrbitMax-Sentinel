@@ -2,9 +2,13 @@ Foi requisitado para a IA Claude a criação, animação e responsividade das es
 
 Foi retornado pela IA: a function iniciarEstrelas() completa;
 
+Foi requisitado a IA os degradês utilizados na landing page
+
+Foi requisitado a IA a nomenclação da classe inicial (hero) em style.css
+
 foi requisitado a IA a validação das informações presentes no formulário
 
-Foi retornado as funcitons validarTexto() e validarEmail();
+Foi retornado o sistema de validação em formulario-quiz.js;
 
 Foi pedido a IA a separação CSS entre arquivos
 
@@ -22,6 +26,6 @@ Foi retornado asycn function carregarEventos();
 
 Foi requisitado a IA a coleta dos dados preenchidos no formulario para o console log
 
-Foi requisitado a IA a utilização de rem como parametro em arquivos CSS
+Foi requisitado a IA a utilização de REM e VW como parametro de medidas em arquivos CSS
 
 Foi requisitado a IA a estilização das seleções presentes no formulário para q a aba de seleção apareça para baixo e n para cima (.form select)

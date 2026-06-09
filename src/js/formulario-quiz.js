@@ -400,5 +400,6 @@ document.addEventListener("DOMContentLoaded", function() {
   console.log("DOM carregado. Iniciando formulário e quiz.");
   iniciarFormulario();
   iniciarQuiz();
+  iniciarTrocaTema();
   console.log("OrbitMax Sentinel pronta para uso.");
 });

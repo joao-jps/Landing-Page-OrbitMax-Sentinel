@@ -175,10 +175,48 @@ btnPrev.addEventListener("click", () => {
 
 carregarEventos();
 
+// TROCA DE TEMA
+function iniciarTrocaTema() {
+  console.log("[Tema] Iniciando troca de tema.");
+ 
+  const botoes = document.querySelectorAll(".btn-tema");
+ 
+  // Aplica o tema: coloca a classe certa no body e marca o botão ativo
+  function aplicarTema(nomeTema) {
+    // Remove qualquer tema anterior
+    document.body.classList.remove("tema-escuro", "tema-azul", "tema-branco");
+ 
+    // Adiciona o tema escolhido
+    document.body.classList.add("tema-" + nomeTema);
+ 
+    // Atualiza o botão ativo
+    botoes.forEach(function(btn) {
+      btn.classList.toggle("ativo", btn.dataset.tema === nomeTema);
+    });
+ 
+    localStorage.setItem("orbitmax-tema", nomeTema);
+    console.log(`[Tema] Tema aplicado: "${nomeTema}"`);
+  }
+ 
+  // Clique em cada botão
+  botoes.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      aplicarTema(btn.dataset.tema);
+    });
+  });
+ 
+  // Restaura o tema salvo ou usa escuro como padrão
+  const temaSalvo = localStorage.getItem("orbitmax-tema") || "escuro";
+  aplicarTema(temaSalvo);
+ 
+  console.log("[Tema] Pronto.");
+}
+
 // INICIALIZAÇÃO — chama tudo quando o HTML carregar
 document.addEventListener("DOMContentLoaded", function() {
   iniciarEstrelas();
   iniciarNavegacao();
   iniciarAcordeao();
   iniciarBarras();
+  iniciarTrocaTema();
 });

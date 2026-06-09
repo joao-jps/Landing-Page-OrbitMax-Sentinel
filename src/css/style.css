@@ -97,9 +97,14 @@ body {
 
 .nav-logo {
   font-family: var(--fonte-titulo);
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: var(--branco);
   letter-spacing: 0.04em;
+  
+}
+
+.nav-logo strong {
+  color: #f97316;
 }
 
 .nav-links {
@@ -112,10 +117,35 @@ body {
   font-size: 0.65rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--texto-fraco);
+  color: var(--branco);
 }
 
-
+/* Grupo de botões de troca de tema na nav */
+.nav-temas {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+ 
+/* Cada botão de tema — círculo pequeno e clicável */
+.btn-tema {
+  width: 65px;
+  height: 40px;
+  border-radius: 30%;
+  border: 1px solid var(--);
+  background: var(--fundo-card);
+  cursor: pointer;
+  font-size: 0.80rem;
+  color: #fd6925;
+  font-weight: bold;
+  font-family: var(--fonte-titulo);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, transform 0.2s;
+}
+ 
 /* HERO ( Inicio )*/
 #hero {
   position: relative;
@@ -750,6 +780,49 @@ body {
   padding-top: 1.2rem;
 }
 
+img {
+  border-radius: 10px;
+  width: 45%;
+  background-color: #080c14;
+}
+
+   /* TEMAS DE COR */
+ 
+/* TEMA ESCURO — padrão da página */
+body.tema-escuro {
+  --fundo:       #080c14;
+  --fundo-alt:   #0d1422;
+  --fundo-card:  #111928;
+  --borda:       #1e2d47;
+  --borda-hover: #2a4a7f;
+  --texto:       #e2e8f0;
+  --texto-fraco: #94a3b8;
+  --branco:      #ffffff;
+}
+ 
+/* TEMA AZUL — tons intermediários */
+body.tema-azul {
+  --fundo:       #0d1b2e;
+  --fundo-alt:   #132540;
+  --fundo-card:  #1a3155;
+  --borda:       #2a4a7f;
+  --borda-hover: #3b6bba;
+  --texto:       #ccd9ee;
+  --texto-fraco: #7a9cc4;
+  --branco:      #e8f0fa;
+}
+ 
+/* TEMA CLARO — */
+body.tema-branco {
+  --fundo:       #f0f4f8;
+  --fundo-alt:   #e2e8f0;
+  --fundo-card:  #ffffff;
+  --borda:       #cbd5e1;
+  --borda-hover: #94a3b8;
+  --texto:       #1e293b;
+  --texto-fraco: #475569;
+  --branco:      #0f172a;
+}
 
 /* Responsividade */
 @media (max-width: 768px) {
@@ -768,8 +841,3 @@ body {
   .etapa-circulo { left: -2rem; }
 }
 
-img {
-  width: 50%;
-  border-radius: 10px;
-  background-color: #080c14;
-}
